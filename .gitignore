@@ -1,0 +1,19 @@
+# dependencies and build output
+node_modules/
+dist/
+
+# secrets — never commit real keys; copy .env.example to .env.local instead
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# tooling and local scratch
+.impeccable/
+.claude/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db
