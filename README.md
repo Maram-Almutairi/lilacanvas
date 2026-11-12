@@ -1,11 +1,11 @@
-# MOODSPACE
+# Lilacanvas
 
 **Your imagination, organized.** A creative workspace for moodboards, colour palettes and visual references that runs entirely in the browser.
 
 - **Board editor** — an infinite canvas for images, text, frames, shapes, sticky notes and colour chips, with resize, rotate, grouping, alignment, layers, undo/redo and PNG export.
 - **Color Lab** — build palettes, extract colours from images, generate harmonies and check contrast.
 - **Library** — photography, textures, type pairings, shapes and saved elements, searchable and draggable onto a board.
-- **Local-first** — no account and no server. Boards are saved in your browser (IndexedDB) and can be exported as `.moodspace` files.
+- **Local-first** — no account and no server. Boards are saved in your browser (IndexedDB) and can be exported as `.lilacanvas` files.
 
 ## Run it
 

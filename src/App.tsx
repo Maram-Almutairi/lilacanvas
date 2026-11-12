@@ -15,7 +15,7 @@ function Editor({ id }: { id: string }) {
   const open = useStore((s) => s.open)
   const shell = useShell()
   useEffect(() => { open(id); return () => { open(null); useShell.getState().set({ tray: null, props: false }) } }, [id, open])
-  useEffect(() => { if (board) document.title = `${board.name} — MOODSPACE`; return () => { document.title = 'MOODSPACE' } }, [board?.name]) // eslint-disable-line
+  useEffect(() => { if (board) document.title = `${board.name} — Lilacanvas`; return () => { document.title = 'Lilacanvas' } }, [board?.name]) // eslint-disable-line
   const active = useStore((s) => s.activeId === id)
   if (!board || board.trashed) return (
     <div className="h-full grid place-items-center bg-bg2 text-center p-6">
@@ -47,7 +47,7 @@ export default function App() {
     <div className="h-full grid place-items-center bg-bg">
       <div className="flex flex-col items-center gap-4">
         <div className="animate-pulse"><Mark size={34} /></div>
-        <div className="font-display text-[12.5px] tracking-[0.24em]"><span className="font-extrabold">MOOD</span><span className="text-muted font-medium">SPACE</span></div>
+        <div className="font-display text-[12.5px] tracking-[0.24em]"><span className="font-extrabold">LILA</span><span className="text-muted font-medium">CANVAS</span></div>
         <div className="w-28 h-[2px] rounded-full skel" />
       </div>
     </div>

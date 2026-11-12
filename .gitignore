@@ -17,3 +17,6 @@ dist/
 *.log
 .DS_Store
 Thumbs.db
+
+# promo film project (kept local)
+lilacanvas-film/

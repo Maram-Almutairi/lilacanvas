@@ -19,7 +19,7 @@ const csp = [
 ].join('; ')
 
 const securityHeaders = (): Plugin => ({
-  name: 'moodspace-security-meta',
+  name: 'lilacanvas-security-meta',
   apply: 'build',
   transformIndexHtml: (html) => html.replace('<meta charset="UTF-8" />', `<meta charset="UTF-8" />\n    <meta http-equiv="Content-Security-Policy" content="${csp}" />`),
 })

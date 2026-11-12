@@ -29,7 +29,7 @@ export function Logo({ compact }: { compact?: boolean }) {
       <Mark />
       {!compact && (
         <span className="font-display text-[12.5px] leading-none tracking-[0.2em]">
-          <span className="font-extrabold">MOOD</span><span className="font-medium text-muted">SPACE</span>
+          <span className="font-extrabold">LILA</span><span className="font-medium text-muted">CANVAS</span>
         </span>
       )}
     </span>

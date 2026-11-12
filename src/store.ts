@@ -298,13 +298,14 @@ function normalizeAll() {
   useStore.setState((s) => ({ boards: s.boards.map((b) => ({ ...b, objects: normalize(b.objects, []) })), assets: s.assets.map((a) => (a.objects ? { ...a, objects: normalize(a.objects, []) } : a)) }))
 }
 
-const KEY = 'moodspace:workspace:v1'
+const KEY = 'lilacanvas:workspace:v1'
+const LEGACY_KEY = 'moodspace:workspace:v1'   // workspaces saved before the rename
 const pick = (s: State): Data => ({ boards: s.boards, collections: s.collections, assets: s.assets, palettes: s.palettes, favColors: s.favColors, recent: s.recent, theme: s.theme })
 
 export async function boot() {
   const faces = ['500 16px "Manrope Variable"', '800 16px "Manrope Variable"', '400 16px "Inter Variable"', '500 16px "Bodoni Moda Variable"', 'italic 500 16px "Bodoni Moda Variable"', '400 16px "DM Mono"']
   const [saved] = await Promise.all([
-    idbGet<Data>(KEY).catch(() => undefined),
+    idbGet<Data>(KEY).then((d) => d ?? idbGet<Data>(LEGACY_KEY)).catch(() => undefined),
     Promise.all(faces.map((f) => document.fonts.load(f).catch(() => null))),
   ])
   if (saved?.boards) useStore.setState({ ...saved })

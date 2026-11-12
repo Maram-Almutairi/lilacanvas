@@ -53,7 +53,7 @@ function Card({ item, compact }: { item: Item; compact?: boolean }) {
   return (
     <figure className="group relative m-0 mb-3 break-inside-avoid">
       <div draggable className="relative cursor-grab active:cursor-grabbing rounded-[4px] outline-1 outline-transparent hover:outline-accent outline-offset-2 transition-[outline-color]"
-        onDragStart={(e) => { e.dataTransfer.setData('application/x-moodspace', JSON.stringify(a ? { assetId: a.id } : { objects: item.objects() })); e.dataTransfer.effectAllowed = 'copy' }}
+        onDragStart={(e) => { e.dataTransfer.setData('application/x-lilacanvas', JSON.stringify(a ? { assetId: a.id } : { objects: item.objects() })); e.dataTransfer.effectAllowed = 'copy' }}
         onClick={() => compact && (place(item), st.toast(`${item.name} placed`))} role={compact ? 'button' : undefined} tabIndex={compact ? 0 : undefined}
         onKeyDown={(e) => compact && e.key === 'Enter' && place(item)} title={compact ? 'Click to place, or drag onto the board' : item.name}>
         {preview}
@@ -153,7 +153,7 @@ export function AssetTray({ tray }: { tray: Exclude<Tray, null> }) {
           <div className="label mb-2">Favorite colours</div>
           <div className="flex flex-wrap gap-1.5 mb-4">
             {favColors.map((c) => <Tip key={c} label={c}><button draggable aria-label={`Place ${c}`} className="w-7 h-7 rounded-full border border-line transition-transform hover:scale-110"
-              style={{ background: c }} onDragStart={(e) => e.dataTransfer.setData('application/x-moodspace', JSON.stringify({ objects: [chip(c, 'Colour', 0, 0)] }))}
+              style={{ background: c }} onDragStart={(e) => e.dataTransfer.setData('application/x-lilacanvas', JSON.stringify({ objects: [chip(c, 'Colour', 0, 0)] }))}
               onClick={(e) => { if (e.shiftKey) return void copyText(c).then(() => st.toast(`${c} copied`)); const at = editor.center?.() ?? { x: 0, y: 0 }; st.add([chip(c, 'Colour', at.x - 52, at.y - 68)]) }} /></Tip>)}
             {!favColors.length && <span className="text-[12px] text-muted">Heart a colour in Color Lab to keep it here.</span>}
           </div>

@@ -105,7 +105,7 @@ export function Dashboard() {
             <p className="text-muted text-[16px] mt-2.5">Your next idea starts here.</p>
           </div>
           <div className="flex items-center gap-2">
-            <label className="btn !h-9 !px-3.5 cursor-pointer"><Upload size={14} /> Import board<input type="file" accept=".moodspace,.json,application/json" hidden onChange={(e) => { const x = e.target.files?.[0]; if (x) importFile(x); e.target.value = '' }} /></label>
+            <label className="btn !h-9 !px-3.5 cursor-pointer"><Upload size={14} /> Import board<input type="file" accept=".lilacanvas,.moodspace,.json,application/json" hidden onChange={(e) => { const x = e.target.files?.[0]; if (x) importFile(x); e.target.value = '' }} /></label>
             <button className="btn btn-primary !h-9 !px-4 !text-[13px]" onClick={() => newBoard()}><Plus size={15} /> Create New Board</button>
           </div>
         </header>
@@ -218,7 +218,7 @@ export function Boards({ filter }: { filter: string }) {
     filter === 'projects' ? KINDS.map((k): [string, Board[]] => [k, list.filter((b) => b.kind === k)]).filter(([, l]) => l.length)
     : filter === 'collections' ? [...collections.map((c): [string, Board[]] => [c.name, list.filter((b) => b.collectionId === c.id)]), ['Not in a collection', list.filter((b) => !collections.some((c) => c.id === b.collectionId))]]
     : null
-  const empty: Record<string, string> = { shared: 'Nothing has been shared yet. Import a .moodspace file to open someone else’s board.', favorites: 'No favorites yet. Tap the heart on a board to keep it here.', trash: 'Trash is empty.' }
+  const empty: Record<string, string> = { shared: 'Nothing has been shared yet. Import a .lilacanvas file to open someone else’s board.', favorites: 'No favorites yet. Tap the heart on a board to keep it here.', trash: 'Trash is empty.' }
   return (
     <div className="h-full overflow-y-auto bg-bg2">
       <div className="max-w-[1180px] mx-auto px-10 max-sm:px-4 pt-9 pb-24">
@@ -228,7 +228,7 @@ export function Boards({ filter }: { filter: string }) {
             <div className="flex items-center gap-1.5 flex-wrap">
               {filter !== 'trash' && <Filters {...f.props} />}
               {filter === 'collections' && <button className="btn !h-7" onClick={() => { const name = prompt('Name the new collection'); if (name?.trim()) useStore.setState((s) => ({ collections: [...s.collections, { id: 'c-' + Date.now(), name: name.trim() }] })) }}><FolderPlus size={13} /> New collection</button>}
-              {filter === 'shared' && <label className="btn !h-7 cursor-pointer"><Upload size={13} /> Import<input type="file" accept=".moodspace,.json" hidden onChange={(e) => { const x = e.target.files?.[0]; if (x) importFile(x); e.target.value = '' }} /></label>}
+              {filter === 'shared' && <label className="btn !h-7 cursor-pointer"><Upload size={13} /> Import<input type="file" accept=".lilacanvas,.moodspace,.json" hidden onChange={(e) => { const x = e.target.files?.[0]; if (x) importFile(x); e.target.value = '' }} /></label>}
             </div>
           )}
         </div>

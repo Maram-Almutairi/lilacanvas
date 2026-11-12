@@ -46,7 +46,7 @@ export function Promo() {
   const [ci, setCi] = useState(3)
   const color = pal?.colors[Math.min(ci, (pal?.colors.length ?? 1) - 1)] ?? '#B7A0F4'
   const enter = () => nav('home')
-  useEffect(() => { document.title = 'MOODSPACE — Your imagination, organized.'; return () => { document.title = 'MOODSPACE' } }, [])
+  useEffect(() => { document.title = 'Lilacanvas — Your imagination, organized.'; return () => { document.title = 'Lilacanvas' } }, [])
   const words = (text: string, start = 0) => text.split(' ').map((w, i) => <span key={i} className="promo-word" style={{ animationDelay: `${start + i * 90}ms` }}>{w}&nbsp;</span>)
 
   return (
@@ -72,7 +72,7 @@ export function Promo() {
             <span className="font-serif italic font-medium tracking-[-0.03em] text-accent">{words('organized.', 300)}</span>
           </h1>
           <p className="promo-in text-muted text-[clamp(15px,1.5vw,18px)] leading-relaxed max-w-[52ch] mx-auto mt-7" style={{ animationDelay: '520ms' }}>
-            MOODSPACE is a studio for the part of the work that happens before the work — collecting references, pinning them to a desk, and finding the colour and type that hold an idea together.
+            Lilacanvas is a studio for the part of the work that happens before the work — collecting references, pinning them to a desk, and finding the colour and type that hold an idea together.
           </p>
           <div className="promo-in flex items-center justify-center gap-3 mt-9 flex-wrap" style={{ animationDelay: '640ms' }}>
             <button className="btn btn-primary !h-11 !px-6 !text-[14px] !rounded-lg" onClick={enter}>Start a board <ArrowRight size={16} /></button>
@@ -204,7 +204,7 @@ export function Promo() {
         <Reveal className="relative">
           <div className="inline-block"><Mark size={44} /></div>
           <h2 className="font-display font-semibold tracking-[-0.04em] leading-[1] text-[clamp(38px,6.6vw,84px)] mt-8">Start with a <span className="font-serif italic font-medium text-accent">clear desk.</span></h2>
-          <p className="text-muted text-[16px] mt-6 max-w-[46ch] mx-auto leading-relaxed">No account, no upload queue. MOODSPACE runs in this browser and keeps your boards on this device.</p>
+          <p className="text-muted text-[16px] mt-6 max-w-[46ch] mx-auto leading-relaxed">No account, no upload queue. Lilacanvas runs in this browser and keeps your boards on this device.</p>
           <button className="btn btn-primary !h-12 !px-7 !text-[15px] !rounded-lg mt-10" onClick={enter}>Open the studio <ArrowRight size={17} /></button>
         </Reveal>
       </section>
@@ -212,7 +212,7 @@ export function Promo() {
       <footer className="border-t border-line px-10 max-sm:px-5 h-16 flex items-center justify-between text-[12px] text-muted">
         <Logo />
         <span className="flex items-center gap-5"><button className="hover:text-ink transition-colors" onClick={() => nav('terms')}>Terms</button><button className="hover:text-ink transition-colors" onClick={() => nav('privacy')}>Privacy</button></span>
-        <span className="mono text-[11px]">© {new Date().getFullYear()} MOODSPACE</span>
+        <span className="mono text-[11px]">© {new Date().getFullYear()} Lilacanvas</span>
       </footer>
     </div>
   )

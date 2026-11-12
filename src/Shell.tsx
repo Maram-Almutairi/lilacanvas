@@ -22,18 +22,18 @@ export function exportFile(boardId: string) {
   const b = useStore.getState().boards.find((x) => x.id === boardId)
   if (!b) return
   const { name, kind, description, canvasColor, objects } = b
-  download(URL.createObjectURL(new Blob([JSON.stringify({ moodspace: 1, name, kind, description, canvasColor, objects })], { type: 'application/json' })), name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.moodspace')
+  download(URL.createObjectURL(new Blob([JSON.stringify({ lilacanvas: 1, name, kind, description, canvasColor, objects })], { type: 'application/json' })), name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.lilacanvas')
   useStore.getState().toast('Board file downloaded')
 }
 export function importFile(file: File) {
   const st = useStore.getState()
-  if (file.size > 60 * 1024 * 1024) return st.toast('That file is too large to be a MOODSPACE board (60 MB limit).')
+  if (file.size > 60 * 1024 * 1024) return st.toast('That file is too large to be a Lilacanvas board (60 MB limit).')
   file.text().then((t) => {
     const data = JSON.parse(t)
     if (!Array.isArray(data.objects)) throw new Error()
     nav('board/' + st.importBoard(data))
     st.toast(`Imported “${data.name ?? 'board'}”`)
-  }).catch(() => st.toast('That file is not a MOODSPACE board. Choose a .moodspace file.'))
+  }).catch(() => st.toast('That file is not a Lilacanvas board. Choose a .lilacanvas file.'))
 }
 
 /* ---------------- top bar ---------------- */
@@ -56,7 +56,7 @@ export function TopBar() {
         <Tip down label="Full screen"><button aria-label="Toggle full screen" onClick={() => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.())} className={`${light} group-hover:bg-[#62C277]`} /></Tip>
       </div>
       <button className="iconbtn lg:hidden" aria-label="Open navigation" onClick={() => shell.set({ side: true })}><MenuIcon size={17} /></button>
-      <button onClick={() => nav('home')} aria-label="MOODSPACE home" className="lg:ml-2 flex items-center"><span className="max-sm:hidden"><Logo /></span><span className="sm:hidden"><Mark /></span></button>
+      <button onClick={() => nav('home')} aria-label="Lilacanvas home" className="lg:ml-2 flex items-center"><span className="max-sm:hidden"><Logo /></span><span className="sm:hidden"><Mark /></span></button>
       <span className="w-px h-5 bg-line max-sm:hidden" />
 
       <div className="flex items-center gap-2.5 min-w-0 flex-1">
@@ -77,7 +77,7 @@ export function TopBar() {
         <Menu width={286} trigger={(_, toggle) => <button className="btn max-sm:!px-2" onClick={toggle}><Share2 size={14} /><span className="max-sm:hidden">Share</span></button>}>
           {(close) => <div className="p-2">
             <div className="font-display font-semibold text-[13px]">Share “{board.name}”</div>
-            <p className="text-[12px] text-muted mt-1 mb-3 leading-snug">Boards live in this browser. Send the board file and anyone can open an editable copy in their own MOODSPACE.</p>
+            <p className="text-[12px] text-muted mt-1 mb-3 leading-snug">Boards live in this browser. Send the board file and anyone can open an editable copy in their own Lilacanvas.</p>
             <button className="btn btn-primary w-full" onClick={() => { exportFile(board.id); close() }}><FileJson size={14} /> Download board file</button>
             <button className="btn w-full mt-1.5" onClick={() => { copyText(location.href).then(() => st.toast('Link copied — it opens this board on this device')); close() }}><Link2 size={14} /> Copy link</button>
           </div>}
@@ -85,7 +85,7 @@ export function TopBar() {
         <Menu width={232} trigger={(_, toggle) => <button className="btn btn-primary max-sm:!px-2" onClick={toggle}><Download size={14} /><span className="max-sm:hidden">Export</span><ChevronDown size={13} className="max-sm:hidden -mr-1" /></button>}>
           {(close) => <>
             <button className="menuitem" onClick={() => { editor.exportPNG?.(); close() }}><FileImage size={14} /> PNG image<kbd>2×</kbd></button>
-            <button className="menuitem" onClick={() => { exportFile(board.id); close() }}><FileJson size={14} /> Board file<kbd>.moodspace</kbd></button>
+            <button className="menuitem" onClick={() => { exportFile(board.id); close() }}><FileJson size={14} /> Board file<kbd>.lilacanvas</kbd></button>
           </>}
         </Menu>
         <Tip down label="Properties" className="lg:hidden"><button className="iconbtn" aria-label="Toggle properties" data-on={shell.props} onClick={() => shell.set({ props: !shell.props })}><PanelRight size={16} /></button></Tip>
@@ -99,7 +99,7 @@ export function TopBar() {
           <div className="menusep" />
           <button className="menuitem" onClick={() => st.setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}{theme === 'dark' ? 'Light theme' : 'Dark theme'}</button>
           <button className="menuitem" onClick={() => { shell.set({ shortcuts: true }); close() }}><Keyboard size={14} /> Keyboard shortcuts</button>
-          <button className="menuitem" onClick={() => { nav('promo'); close() }}><Share2 size={14} /> About MOODSPACE</button>
+          <button className="menuitem" onClick={() => { nav('promo'); close() }}><Share2 size={14} /> About Lilacanvas</button>
           <div className="menusep" />
           <button className="menuitem" onClick={() => { if (confirm('Reset the workspace to the sample projects? Your boards, uploads and palettes in this browser will be replaced.')) { st.resetWorkspace(); nav('home'); st.toast('Workspace reset to the sample projects') } close() }}><RotateCcw size={14} /> Reset sample workspace</button>
         </>}

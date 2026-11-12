@@ -320,7 +320,7 @@ export function Canvas({ board }: { board: Board }) {
     e.preventDefault(); setDropping(false)
     const pt = toCanvas(e.clientX, e.clientY)
     const st = useStore.getState()
-    const raw = e.dataTransfer.getData('application/x-moodspace')
+    const raw = e.dataTransfer.getData('application/x-lilacanvas')
     if (raw) {
       let payload: { assetId?: unknown; objects?: unknown }
       try { payload = JSON.parse(raw) } catch { return }

@@ -217,7 +217,7 @@ export const seedCollections = (): Collection[] => [
 ]
 export const seedPalettes = (): Palette[] => [
   { id: 'p-straw', name: 'Strawberry Milk', collection: 'Brand', colors: ['#FFF4EC', '#F6C9D2', '#E98AA2', '#C93F5A', '#BFE0CF', '#4A2F36'] },
-  { id: 'p-space', name: 'Moodspace', collection: 'Brand', colors: ['#211D2B', '#393343', '#9984CC', '#B7A0F4', '#E8DFFC', '#F6F2F8'] },
+  { id: 'p-space', name: 'Lilacanvas', collection: 'Brand', colors: ['#211D2B', '#393343', '#9984CC', '#B7A0F4', '#E8DFFC', '#F6F2F8'] },
   { id: 'p-night', name: 'After Hours', collection: 'Editorial', colors: ['#0D0C13', '#1C2740', '#34467E', '#8C7AE6', '#E8DFFC', '#C39A73'] },
   { id: 'p-living', name: 'Apartment 4B', collection: 'Interiors', colors: ['#E9E4DC', '#C9B79C', '#8A9A85', '#2F4A3C', '#D9A62E', '#262522'] },
   { id: 'p-garden', name: 'Evergreen', collection: 'Web', colors: ['#0F2A1D', '#2F6B4F', '#8FBF9A', '#DDE5DB', '#F4F1EA', '#D96C4A'] },
